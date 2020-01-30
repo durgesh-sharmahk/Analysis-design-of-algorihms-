@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+int mult_iter(int x,int y)
+{
+	int sum=0;
+	for(int i=0;i<y;i++){
+		sum=sum+x;
+	}
+	return sum;
+}
+int main(){
+	int x,y;
+	cout<<"enter x:";
+	cin>>x;
+	cout<<"enter y:";
+	cin>>y;
+	int m=mult_iter(x,y);
+	cout<<m;
+	return 0;
+	
+}
