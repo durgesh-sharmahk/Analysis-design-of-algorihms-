@@ -1,0 +1,16 @@
+#include<iostream>
+using namespace std;
+int mult_recursive(int x,int y,int sum){
+	if(y==1) return x;	
+	return x+mult_recursive(x,y-1,sum+x);
+}
+int main(){
+	int x,y;
+	cout<<"enter x:";
+	cin>>x;
+	cout<<"enter y:";
+	cin>>y;
+	int m=mult_recursive(x,y,0);
+	cout<<m;
+	return 0;
+}
