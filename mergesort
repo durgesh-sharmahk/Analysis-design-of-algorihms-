@@ -1,0 +1,56 @@
+#include<iostream>
+using namespace std;
+
+void Merge(int *a,int low,int high,int mid){
+	int i,j,k,temp[50];
+	i=low;
+	k=low;
+	j=mid+1;
+	while(i<=mid&&j<=high){
+		if(a[i]<a[j]){
+			temp[k]=a[i];
+			k++;i++;
+		}
+		else{
+			temp[k]=a[j];
+			k++;j++;
+		}
+	}
+	while(i<=mid){
+		temp[k]=a[i];
+		k++;
+		i++;
+	}
+	while(j<=high){
+		temp[k]=a[j];
+		k++;
+		j++;
+	}
+	for(i=low;i<k;i++){
+		a[i]=temp[i];
+	}
+}
+
+void Merge_Sort(int *a,int low,int high){
+	int mid;
+	if(low<high){
+		mid = (low+high)/2;
+		Merge_Sort(a,low,mid);
+		Merge_Sort(a,mid+1,high);
+		Merge(a,low,high,mid);
+	}
+}
+int main(){
+	int n;
+	cout<<"Enter size of array\n";
+	cin>>n;
+	int a[n];
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+	}
+	Merge_Sort(a,0,n-1);
+	cout<<"\nSORTED ARRAY IS : \n";
+	for(int i=0;i<n;i++){
+		cout<<a[i]<<endl;
+	}
+}
