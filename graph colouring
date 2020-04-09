@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+
+bool graph[4][4]= {{0,1,1,1},{1,0,1,0},{1,1,0,1},{1,0,1,0}};
+int V=4; int m=3; int x[4]={0};
+
+bool isSafe(int v, int c)
+{   for(int i=0;i<V;i++)
+	{
+		if(graph[v][i] && c==x[i])
+    return false;
+	}
+	return true;
+}
+
+bool graphcolor(int v)
+{         if(v==V) return true;
+	for(int c=1;c<=m;c++)
+	{   if(isSafe(v,c))
+		{ x[v]=c;
+		if(graphcolor(v+1)==true)
+    return true;		
+                    }
+	}
+	return false;
+}
+
+int main()
+{
+	if(graphcolor(0)==false) 
+	{   cout<<"No solution exist";
+		exit(-1);
+	}
+	cout<<"\nTHe solution is\n";
+	for(int i=0;i<V;i++) cout<<x[i]<<" ";
+}
