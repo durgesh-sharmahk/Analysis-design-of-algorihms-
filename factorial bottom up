@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+
+int fact(int n,int F[])
+{
+  F[0]=1; 
+  for (int i = 1; i<=n; i++)
+  { 
+    F[i] = F[i-1] * i;
+  }
+   return F[n];
+}
+
+int main(){
+	int n;
+	cout<<"Enter the number : ";
+	cin>>n;
+	int F[n];
+	cout<<"Factorial is : "<<fact(n,F);
+}
