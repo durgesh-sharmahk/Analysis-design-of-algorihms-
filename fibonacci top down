@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+int size =50;
+int F[50];
+
+void init_result(){
+	for(int i=0;i<50;i++)
+	 F[i]=-1;
+}
+
+int fib(int N)
+{
+	if(F[N] == -1)
+    {
+        if(N <= 1)
+            F[N] = N;
+        else
+            F[N] = fib(N-1) + fib(N-2);
+    }
+    return F[N];
+}
+
+
+int main(){
+	int n;
+	cout<<"Enter the number : ";
+	cin>>n;
+	init_result();
+	cout<<"Fibonacci  : "<<fib(n);
+}
